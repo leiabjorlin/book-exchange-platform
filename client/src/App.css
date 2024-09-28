@@ -231,3 +231,8 @@ h2 {
 .content {
   padding-top: 70px;  /* Adjust based on your navbar height */
 }
+
+.chats-page p{
+  color:#ffffff;
+  font-weight: bold;
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import SwipingPage from './SwipingPage';
+import Platform from './Platform';
 
 function LandingPage({ onStart }) {
   return (
@@ -25,7 +25,7 @@ function App() {
 
   return (
     <div className='app'>
-      {showSwiping ? <SwipingPage /> : <LandingPage onStart={handleStartSwiping} />}
+      {showSwiping ? <Platform /> : <LandingPage onStart={handleStartSwiping} />}
     </div>
   );
 }
