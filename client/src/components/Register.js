@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 const Register = () => {
   const [formData, setFormData] = useState({
     name: '',
-    phoneNumber: '',
+    email: '',
     password: ''
   });
   const [message, setMessage] = useState('');
 
-  const { name, phoneNumber, password } = formData;
+  const { name, email, password } = formData;
 
-  //Handle input changes
+  // Handle input changes
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -19,32 +19,23 @@ const Register = () => {
     });
   };
 
-  //Handle form submission
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    //Get existing users from localStorage
     let users = JSON.parse(localStorage.getItem('users')) || [];
-
-    // Check if the user already exists
-    const existingUser = users.find((user) => user.phoneNumber === phoneNumber);
+    const existingUser = users.find((user) => user.email === email);
     if (existingUser) {
       setMessage('User already exists');
       return;
     }
-
-    //Add new user to users array
-    const newUser = { name, phoneNumber, password };
+    const newUser = { name, email, password };
     users.push(newUser);
-
-    //Save updated users array to localStorage
     localStorage.setItem('users', JSON.stringify(users));
-
     setMessage('User registered successfully');
   };
 
   return (
-    <div>
+    <div className="form-container">
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -52,8 +43,8 @@ const Register = () => {
           <input type="text" name="name" value={name} onChange={handleChange} required />
         </div>
         <div>
-          <label>phone number:</label>
-          <input type="phoneNumber" name="phoneNumber" value={phoneNumber} onChange={handleChange} required />
+          <label>Email:</label>
+          <input type="email" name="email" value={email} onChange={handleChange} required />
         </div>
         <div>
           <label>Password:</label>
@@ -62,8 +53,7 @@ const Register = () => {
         <button type="submit">Register</button>
       </form>
       {message && <p>{message}</p>}
-      {/* Link to the Register Page */}
-      <p>Already have an account? <Link to="/">Login here</Link></p>
+      <p><Link to="/">Already have an account? Login here</Link></p>
     </div>
   );
 };

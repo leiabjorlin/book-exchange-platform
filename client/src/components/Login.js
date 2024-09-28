@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    phoneNumber: '',
+    email: '',
     password: ''
   });
   const [message, setMessage] = useState('');
 
-  const { phoneNumber, password } = formData;
+  const { email, password } = formData;
 
   // Handle input changes
   const handleChange = (e) => {
@@ -21,26 +21,22 @@ const Login = () => {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Get users from localStorage
     let users = JSON.parse(localStorage.getItem('users')) || [];
-
-    // Find the user with matching phone number and password
-    const user = users.find((user) => user.phoneNumber === phoneNumber && user.password === password);
+    const user = users.find((user) => user.email === email && user.password === password);
     if (user) {
       setMessage('Login successful');
     } else {
-      setMessage('Invalid phone number or password');
+      setMessage('Invalid email number or password');
     }
   };
 
   return (
-    <div>
+    <div className="form-container">
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Phone number:</label>
-          <input type="phoneNumber" name="phoneNumber" value={phoneNumber} onChange={handleChange} required />
+          <label>Email:</label>
+          <input type="email" name="email" value={email} onChange={handleChange} required />
         </div>
         <div>
           <label>Password:</label>
@@ -49,9 +45,7 @@ const Login = () => {
         <button type="submit">Login</button>
       </form>
       {message && <p>{message}</p>}
-
-      {/* Link to the Register Page */}
-      <p>Don't have an account? <Link to="/register">Register here</Link></p>
+      <p><Link to="/register">Don't have an account? Register here</Link></p>
     </div>
   );
 };

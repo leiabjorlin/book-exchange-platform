@@ -1,0 +1,125 @@
+/* General body styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #bee7f4; /* Deep Blue background */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Unified layout for the welcome text and the login form */
+.app-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 50px; /* Space between the columns */
+  width: 90%;
+  max-width: 1200px;
+  height: 80vh; /* Height of the layout */
+  align-items: center; /* Aligns both sections vertically */
+  background-color: #bee7f4; /* Dark Slate Blue background */
+  padding: 50px;
+  border-radius: 10px;
+}
+
+/* Welcome section on the left */
+.welcome-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.welcome-section h1 {
+  font-size: 48px;
+  color: #1abc9c; /* Mint Green */
+  margin-bottom: 20px;
+}
+
+.welcome-section p {
+  font-size: 18px;
+  color: #000000; /* Black text */
+  max-width: 450px;
+}
+
+/* Form section on the right */
+.form-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-section p{
+  color:#000000
+}
+
+/* Form styling */
+.form-container {
+  width: 100%;
+  max-width: 400px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #95a5a6; /* Soft Grey border */
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #1abc9c; /* Mint Green on focus */
+  outline: none;
+}
+
+/* Submit button */
+button[type="submit"] {
+  background-color: #1abc9c; /* Mint Green */
+  color: white;
+  padding: 12px;
+  margin: 20px 0;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #16a085; /* Darker Mint Green */
+  transform: translateY(-3px); /* Slight lift on hover */
+}
+
+/* Links */
+a {
+  color: #1abc9c;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #16a085;
+  text-decoration: underline;
+}
+
+/* Message styling */
+p {
+  color: #ecf0f1; /* Light text for messages */
+  font-weight: bold;
+}
+
+/* Error message styling */
+.error-message {
+  color: #e74c3c; /* Red for error messages */
+}
