@@ -1,19 +1,32 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './components/Login.js';
-import Register from './components/Register.js';
-import Platform from './components/Platform.js';
+import React, { useState } from 'react';
 import './App.css';
+import Advanced from './Advanced'; // The swiping component
+
+function LandingPage({ onStart }) {
+  return (
+    <div className='landing-page'>
+      <h1>Welcome to the Peer-to-Peer Book Exchange Platform</h1>
+      <p>Find and exchange books with others in your community</p>
+      <div className='buttons'>
+        <button onClick={onStart}>
+          Start Swiping
+        </button>
+      </div>
+    </div>
+  );
+}
 
 function App() {
+  const [showSwiping, setShowSwiping] = useState(false);
+
+  const handleStartSwiping = () => {
+    setShowSwiping(true);
+  };
+
   return (
-    <Router>
-      <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/platform" element={<Platform />} />
-        </Routes>
-    </Router>
+    <div className='app'>
+      {showSwiping ? <Advanced /> : <LandingPage onStart={handleStartSwiping} />}
+    </div>
   );
 }
 
