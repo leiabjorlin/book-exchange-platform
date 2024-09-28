@@ -57,6 +57,11 @@ h2 {
   position: absolute;
 }
 
+.cards{
+  display: grid;
+  place-items: center;  
+}
+
 .cardContainer {
   width: 90vw;
   max-width: 260px;
@@ -185,4 +190,44 @@ h2 {
 .landing-page p {
   color: #ffffff;
   font-weight: bold;
+}
+
+.navbar {
+  width: 100%;
+  background-color: #63b6c3;
+  padding: 15px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: left;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar ul li {
+  display: inline;
+}
+
+.navbar ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.navbar ul li a:hover {
+  color: #91e5da;
+}
+
+/* Add padding for the content so it's not hidden under the navbar */
+.content {
+  padding-top: 70px;  /* Adjust based on your navbar height */
 }

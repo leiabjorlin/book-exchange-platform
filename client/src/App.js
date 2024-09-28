@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import Advanced from './Advanced'; // The swiping component
+import SwipingPage from './SwipingPage';
 
 function LandingPage({ onStart }) {
   return (
@@ -25,7 +25,7 @@ function App() {
 
   return (
     <div className='app'>
-      {showSwiping ? <Advanced /> : <LandingPage onStart={handleStartSwiping} />}
+      {showSwiping ? <SwipingPage /> : <LandingPage onStart={handleStartSwiping} />}
     </div>
   );
 }
