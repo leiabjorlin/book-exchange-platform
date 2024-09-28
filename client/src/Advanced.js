@@ -1,5 +1,8 @@
+
 import React, { useState, useMemo, useRef } from 'react';
 import TinderCard from 'react-tinder-card';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 const db = [
   {
@@ -7,90 +10,106 @@ const db = [
     author: 'F. Scott Fitzgerald',
     genre: 'Fiction',
     condition: 'Good',
-    owner: 'Alice'
+    owner: 'Alice',
+    match: 'yes'
   },
   {
     title: '1984',
     author: 'George Orwell',
     genre: 'Dystopian',
     condition: 'Excellent',
-    owner: 'Bob'
+    owner: 'Bob',
+    match: 'yes'
   },
   {
     title: 'To Kill a Mockingbird',
     author: 'Harper Lee',
     genre: 'Classic',
     condition: 'Fair',
-    owner: 'Charlie'
+    owner: 'Charlie',
+    match: 'yes'
   },
   {
     title: 'Moby-Dick',
     author: 'Herman Melville',
     genre: 'Adventure',
     condition: 'Good',
-    owner: 'Diana'
+    owner: 'Diana',
+    match: 'no'
   },
   {
     title: 'Pride and Prejudice',
     author: 'Jane Austen',
     genre: 'Romance',
     condition: 'Excellent',
-    owner: 'Eve'
+    owner: 'Eve',
+    match: 'yes'
   },
   {
     title: 'The Hobbit',
     author: 'J.R.R. Tolkien',
     genre: 'Fantasy',
     condition: 'Good',
-    owner: 'Frank'
+    owner: 'Frank',
+    match: 'no'
   },
   {
     title: 'The Catcher in the Rye',
     author: 'J.D. Salinger',
     genre: 'Classic',
     condition: 'Fair',
-    owner: 'Grace'
+    owner: 'Grace',
+    match: 'yes'
   },
   {
     title: 'Brave New World',
     author: 'Aldous Huxley',
     genre: 'Dystopian',
     condition: 'Excellent',
-    owner: 'Hank'
+    owner: 'Hank',
+    match: 'yes'
   },
   {
     title: 'The Odyssey',
     author: 'Homer',
     genre: 'Epic',
     condition: 'Good',
-    owner: 'Irene'
+    owner: 'Irene',
+    match: 'no'
   },
   {
     title: 'Harry Potter and the Sorcerer’s Stone',
     author: 'J.K. Rowling',
     genre: 'Fantasy',
     condition: 'Excellent',
-    owner: 'Jack'
+    owner: 'Jack',
+    match: 'yes'
   },
   {
     title: 'The Hound of the Baskervilles',
     author: 'Arthur Conan Doyle',
     genre: 'Mystery',
     condition: 'Good',
-    owner: 'Lily'
+    owner: 'Lily',
+    match: 'no'
   },
   {
     title: 'Dune',
     author: 'Frank Herbert',
     genre: 'Sci-Fi',
     condition: 'Excellent',
-    owner: 'Mason'
+    owner: 'Mason',
+    match: 'no'
   }
 ];
+
+// ... (keep the db array as it is)
 
 function Advanced() {
   const [currentIndex, setCurrentIndex] = useState(db.length - 1);
   const [lastDirection, setLastDirection] = useState();
+  const [showMatch, setShowMatch] = useState(false);
+  const [matchedBook, setMatchedBook] = useState(null);
   const currentIndexRef = useRef(currentIndex);
 
   const childRefs = useMemo(
@@ -109,6 +128,11 @@ function Advanced() {
   const swiped = (direction, titleToDelete, index) => {
     setLastDirection(direction);
     updateCurrentIndex(index - 1);
+    
+    if (direction === 'right' && db[index].match === 'yes') {
+      setMatchedBook(db[index]);
+      setShowMatch(true);
+    }
   };
 
   const outOfFrame = (title, idx) => {
@@ -180,6 +204,15 @@ function Advanced() {
           Swipe a card or press a button to get Restore Card button visible!
         </h2>
       )}
+      <Popup open={showMatch} closeOnDocumentClick onClose={() => setShowMatch(false)}>
+        <div className="popup-content">
+          <h2>Yay, it's a match!</h2>
+          {matchedBook && (
+            <p>You can now chat with {matchedBook.owner} in your chats to arrange the details of the book exchange.</p>
+          )}
+          <button onClick={() => setShowMatch(false)}>Close</button>
+        </div>
+      </Popup>
     </div>
   );
 }
