@@ -5,11 +5,15 @@ const Register = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    password: ''
+    password: '',
+    favoriteGenres: [] // Add favoriteGenres to form data
   });
   const [message, setMessage] = useState('');
 
-  const { name, email, password } = formData;
+  const { name, email, password, favoriteGenres } = formData;
+
+  // List of genres to select from
+  const genres = ['Fiction', 'Dystopian', 'Classic', 'Adventure', 'Romance', 'Fantasy', 'Mystery', 'Sci-Fi'];
 
   // Handle input changes
   const handleChange = (e) => {
@@ -28,7 +32,7 @@ const Register = () => {
       setMessage('User already exists');
       return;
     }
-    const newUser = { name, email, password };
+    const newUser = { name, email, password, favoriteGenres };
     users.push(newUser);
     localStorage.setItem('users', JSON.stringify(users));
     setMessage('User registered successfully');

@@ -13,8 +13,9 @@ const Platform = () => {
     { id: 8, title: 'Brave New World', author: 'Aldous Huxley', owner: 'Hank', genre: 'Dystopian', condition: 'Excellent' },
     { id: 9, title: 'The Odyssey', author: 'Homer', owner: 'Irene', genre: 'Epic', condition: 'Good' },
     { id: 10, title: 'Harry Potter and the Sorcerer’s Stone', author: 'J.K. Rowling', owner: 'Jack', genre: 'Fantasy', condition: 'Excellent' },
-]);
-
+    { id: 11, title: 'The Hound of the Baskervilles', author: 'Arthur Conan Doyle', owner: 'Lily', genre: 'Mystery', condition: 'Good' }, // Mystery genre
+    { id: 12, title: 'Dune', author: 'Frank Herbert', owner: 'Mason', genre: 'Sci-Fi', condition: 'Excellent' }, // Sci-Fi genre
+  ]);
 
   const [searchQuery, setSearchQuery] = useState('');
   const [filterGenre, setFilterGenre] = useState('');
@@ -70,6 +71,11 @@ const Platform = () => {
         <option value="Dystopian">Dystopian</option>
         <option value="Classic">Classic</option>
         <option value="Adventure">Adventure</option>
+        <option value="Romance">Romance</option>
+        <option value="Fantasy">Fantasy</option>
+        <option value="Mystery">Mystery</option>
+        <option value="Sci-Fi">Sci-Fi</option>
+        <option value="Epic">Epic</option>
       </select>
 
       {/* Condition Filter */}

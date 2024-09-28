@@ -25,6 +25,12 @@ const Login = () => {
     let users = JSON.parse(localStorage.getItem('users')) || [];
     const user = users.find((user) => user.email === email && user.password === password);
     if (user) {
+      // Save the logged-in user's info (email, favoriteGenres) to localStorage
+      localStorage.setItem('loggedInUser', JSON.stringify({
+        email: user.email,
+        favoriteGenres: user.favoriteGenres
+      }));
+      
       setMessage('Login successful');
       navigate('/platform'); // Redirect to the platform after successful login
     } else {
