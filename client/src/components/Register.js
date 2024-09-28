@@ -35,25 +35,31 @@ const Register = () => {
   };
 
   return (
-    <div className="form-container">
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name:</label>
-          <input type="text" name="name" value={name} onChange={handleChange} required />
-        </div>
-        <div>
-          <label>Email:</label>
-          <input type="email" name="email" value={email} onChange={handleChange} required />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input type="password" name="password" value={password} onChange={handleChange} required />
-        </div>
-        <button type="submit">Register</button>
-      </form>
-      {message && <p>{message}</p>}
-      <p><Link to="/">Already have an account? Login here</Link></p>
+    <div className='app-container'>
+      <div className="welcome-section">
+        <h1>Welcome to the Book Exchange Platform!</h1>
+        <p>Find, exchange, and share books with others in your community.</p>
+      </div>
+      <div className="form-container">
+        <h2>Register</h2>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>Name:</label>
+            <input type="text" name="name" value={name} onChange={handleChange} required />
+          </div>
+          <div>
+            <label>Email:</label>
+            <input type="email" name="email" value={email} onChange={handleChange} required />
+          </div>
+          <div>
+            <label>Password:</label>
+            <input type="password" name="password" value={password} onChange={handleChange} required />
+          </div>
+          <button type="submit">Register</button>
+        </form>
+        {message && <p>{message}</p>}
+        <p><Link to="/">Already have an account? Login here</Link></p>
+      </div>
     </div>
   );
 };
