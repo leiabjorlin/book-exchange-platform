@@ -31,6 +31,10 @@ The app is built using **React.js**.
   - Placeholder for the chat interface (yet to be developed).
 
 ### Phase 2 (Next Steps)
+**Dynamic Matching System**:
+  - Develop a backend database to manage user profiles, book listings, and swiping history.
+  - Replace the static matching system with a dynamic one that matches users based on real interactions. 
+
 - **Chats**:
   - Develop a full chat interface for users to communicate with their matched book exchangers.
  
